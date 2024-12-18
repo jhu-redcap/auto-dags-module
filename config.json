@@ -8,12 +8,15 @@
 			"name": "Mark McEver",
 			"email": "datacore@vumc.org",
 			"institution": "Vanderbilt University Medical Center"
+		},
+		{
+			"name": "Michael Sherman Jr",
+			"email": "mike.sherman@jhmi.edu",
+			"institution": "Johns Hopkins University"
 		}
 	],
 
-	"permissions": [
-		"redcap_save_record"
-	],
+	"framework-version": 14,
 
 	"description": "Automatically creates, renames, and assigns records to Data Access Groups (DAGs) based on the value of a specified field.  The value of that field becomes the name of the DAG.  If the DAG already exists, then the record will be assigned to the existing DAG. An extra page is also provided for assigning the DAG for all records at once.",
 
@@ -22,11 +25,44 @@
 			"key": "dag-field",
 			"name": "Choose a field whose values will be used to generate DAGs.  The following field types are currently supported: text, notes, dropdown, and radio button (including yes/no, true/false)",
 			"type": "field-list"
-		},{
-            "key": "curr-instr-only",
-            "name": "Apply only upon saving instrument containing DAG field? If left unchecked, saving any instrument in a record will trigger DAG assignment",
-            "type": "checkbox"
-        }
+		},
+		{
+			"key": "value-label-flag",
+			"name": "For the above, match using the field's",
+			"type":"radio",
+			"choices": [
+				{"value": "0","name": "Value"},
+				{"value": "1","name": "Label"}
+			]
+		},
+		{
+			"key": "curr-instr-only",
+			"name": "Apply only upon saving instrument containing DAG field? If left unchecked, saving any instrument in a record will trigger DAG assignment",
+			"type": "checkbox"
+		},
+		{
+			"key": "dag-assign-type",
+			"name": "When assigning to the appropriate DAG, match to DAG table's:",
+			"type":"radio",
+			"choices": [
+				{"value": "0","name": "DAG Group ID"},
+				{"value": "1","name": "DAG Group Label"}
+			]
+		},
+		{
+			"key": "create-dag-flag",
+			"name": "If matching DAG does not exist",
+			"type":"radio",
+			"choices": [
+				{"value": "1","name": "Create it"},
+				{"value": "0","name": "Do nothing - no DAG assignment"}
+			]
+		},
+		{
+			"key": "email-notification",
+			"name": "Please supply an email for a notification when DAGs are not found",
+			"type": "email"
+		}
 	],
 
 	"links": {
